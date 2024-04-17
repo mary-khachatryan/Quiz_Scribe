@@ -2,7 +2,7 @@ import openai
 import streamlit as st
 from openai import OpenAI
 from youtube_transcript_api import YouTubeTranscriptApi
-
+import random
 correct_answer = 0
 
 
@@ -26,12 +26,12 @@ print(quiz_Text)
 quiz_Text1 = eval(quiz_Text)
 
 print(2,(quiz_Text1[1]["question"]))
-for i in range(9):
+for i in range(10):
    st.text(quiz_Text1[i]["question"])
-   st.button(quiz_Text1[i]["A"])
-   st.button(quiz_Text1[i]["B"])
-   st.button(quiz_Text1[i]["C"])
-   st.button(quiz_Text1[i]["D"])
+   st.button(quiz_Text1[i]["A"], key =random.randint(0,10000000) )
+   st.button(quiz_Text1[i]["B"], key =random.randint(0,10000000))
+   st.button(quiz_Text1[i]["C"],key =random.randint(0,10000000))
+   st.button(quiz_Text1[i]["D"],key =random.randint(0,10000000))
 #print(3,quiz_Text[1]["question"])
 # if st.button(quiz_Text[1]):
 #   st.write('Why hello there')
