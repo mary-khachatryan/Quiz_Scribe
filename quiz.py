@@ -10,7 +10,6 @@ dictSubtitle = YouTubeTranscriptApi.get_transcript('dQw4w9WgXcQ')
 generalText = " ".join(i['text'] for i in dictSubtitle)
 for i in dictSubtitle:
    generalText += " " + i['text']
-#print(generalText)
 
 client = OpenAI()
 completion = client.chat.completions.create(
@@ -21,23 +20,22 @@ completion = client.chat.completions.create(
   ]
 )
 
-quiz_Text = completion.choices[0].message.content
-print(quiz_Text)
-quiz_Text1 = eval(quiz_Text)
+quiz_Text = eval(completion.choices[0].message.content)
 
-print(2,(quiz_Text1[1]["question"]))
+print(quiz_Text)
 for i in range(10):
-   st.text(quiz_Text1[i]["question"])
-   st.button(quiz_Text1[i]["A"], key =random.randint(0,10000000) )
-   st.button(quiz_Text1[i]["B"], key =random.randint(0,10000000))
-   st.button(quiz_Text1[i]["C"],key =random.randint(0,10000000))
-   st.button(quiz_Text1[i]["D"],key =random.randint(0,10000000))
-#print(3,quiz_Text[1]["question"])
-# if st.button(quiz_Text[1]):
-#   st.write('Why hello there')
-# else:
-#   st.write('Goodbye')
-# name = st.text_input("HEy heey")
+
+  question_text = str(i+1) + ". " + quiz_Text[i]["question"]
+  answer = quiz_Text[i]["correct"]
+  option =st.radio(
+    label= question_text,
+    options = (quiz_Text[i]["A"], quiz_Text[i]["B"], quiz_Text[i]["C"], quiz_Text[i]["D"])
+  )
+  if(option == answer):
+      correct_answer+=1
+
+if(st.button("Submit")):
+   st.write("correct_answer",correct_answer)
 
 
 
