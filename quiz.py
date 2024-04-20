@@ -2,22 +2,16 @@ import openai
 import streamlit as st
 from openai import OpenAI
 from youtube_transcript_api import YouTubeTranscriptApi
-import random
 import os
 import json
 
-text = ""
-correct_answer = 0
-check =0
-num_question = 0
+
 video_id = st.text_input("Send YouTube video Id")
 st.write("For example You can J82z1hkl3Bo or 1ooqsxtdGS0")
 num_question =10 #st.text_input("How many questions Do you Want? [1,10]")
 
 if st.button("next"):
-  txtfile_name = video_id + ".json"
-  print("here",txtfile_name)
-  file_path = "C:\Future\\for git\\Quiz_Scribe\\" + txtfile_name
+  file_path = f"C:\Future\\for git\\Quiz_Scribe\\{video_id}.json"
   
   if  os.path.exists(file_path):
     with open(file_path) as f:
@@ -40,13 +34,14 @@ if st.button("next"):
       quizfile_json = json.loads(completion.choices[0].message.content)
       with open(file_path, "w") as json_file:
         json.dump(quizfile_json, json_file)
+      
       with open(file_path, "r") as json_file:
         text = json.load(json_file)
 
   quiz_Text = text 
 
 
-# TODO Tab size issue 
+
   for i in range(num_question):
     question_text = str(i+1) + ". " + quiz_Text["questions"][i]["question"]
     answer = quiz_Text["questions"][i]["correct"]
