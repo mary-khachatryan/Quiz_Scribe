@@ -1,0 +1,12 @@
+[
+{"question": "What did the speaker see in the eyes of the listeners in the room?", "A": "Belief", "B": "Doubt", "C": "Confusion", "D": "Excitement", "correct": "A"},
+{"question": "What were the names of the ships mentioned by the speaker?", "A": "Nina, Penta, Santa Maria", "B": "Nina, Pentium, Santa Maria", "C": "Nina, Pinta, Santa Maria", "D": "Nina, Pinta, Santa Lucia", "correct": "C"},
+{"question": "Which direction did the speaker set the course of the ship?", "A": "East", "B": "South", "C": "West", "D": "North", "correct": "D"},
+{"question": "What color did the sea turn as the journey continued?", "A": "Red", "B": "Green", "C": "Blue", "D": "White", "correct": "D"},
+{"question": "What did the speaker burn to stay alive during the cold?", "A": "Coal", "B": "Wood", "C": "Her ship", "D": "Food supplies", "correct": "C"},
+{"question": "Who was the only one left at the edge of the world?", "A": "The crew", "B": "The speaker", "C": "The ice", "D": "The tropical bird", "correct": "B"},
+{"question": "Where did the speaker dream of finding a fine deep harbor?", "A": "In the cold ice desert", "B": "Past the edge of the world", "C": "At the top of the world", "D": "In another new world", "correct": "B"},
+{"question": "Why did the speaker smile in their sleep?", "A": "Thinking of the tropical bird", "B": "Remembering the crew", "C": "Recalling the burning of the ship", "D": "Imagining the ship reaching another new world", "correct": "D"},
+{"question": "What did the speaker pretend after returning to the old world?", "A": "To continue the search for a new world", "B": "To forget about the past journey", "C": "To build a new ship", "D": "To sail back to the edge of the world", "correct": "A"},
+{"question": "What did the speaker do with the ship's main sail?", "A": "Repaired it", "B": "Chopped it up for survival", "C": "Used it to catch the wind", "D": "Burned it as fuel", "correct": "B"}
+]

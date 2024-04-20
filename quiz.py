@@ -5,12 +5,16 @@ from youtube_transcript_api import YouTubeTranscriptApi
 import random
 import os
 correct_answer = 0
+check =0
 
-video_id = st.text_input(" Send YouTube video Id")
+video_id = st.text_input("Send YouTube video Id")
+num_question = int(st.text_input("How many questions Do you Want? [1,10]"))
+ 
 if st.button("next"):
-  file_path = video_id.join(".txt")
-  print("here",file_path)
-  
+  txtfile_name = video_id + ".txt"
+  print("here",txtfile_name)
+  file_path = "C:\Future\\for git\\Quiz_Scribe\\" + txtfile_name
+  check = 1
   if  os.path.exists(file_path):
     with open(file_path, "r") as f:
       text = f.read()
@@ -27,33 +31,23 @@ if st.button("next"):
         #{"role": "user", "content": f"{generalText}"}
       ]
       )
- # path_file = 'C:\Future\\for git\Quiz_Scribe\q.txt' # os path join
-# print("pf",path_file)
-# if os.path.exists('q.txt'):
-#    os.remove(path_file)
 
-      with open(file_path, "r+") as f:
+      with open(file_path, "w") as f:
         f.write(completion.choices[0].message.content)
+      with open(file_path, "r") as f:
         text = f.read()
-# with open('q.txt', "r") as f:
-#    text = f.read()
-# print(text)
-# def load_quiz_text():
-#    return eval(tex  
-      #text = completion.choices[0].message.content
-  quiz_Text = eval(text) #load_quiz_text()
+
+  quiz_Text = eval(text) 
 
 # TODO Tab size issue 
-
-
-  for i in range(10):
+for i in range(0,num_question):
     question_text = str(i+1) + ". " + quiz_Text[i]["question"]
     answer = quiz_Text[i]["correct"]
     option = st.radio(label= question_text,options = (quiz_Text[i]["A"], quiz_Text[i]["B"], quiz_Text[i]["C"], quiz_Text[i]["D"])
     )          
     if(option == answer):
       correct_answer+=1
-  if st.button("Submit"):
+if st.button("Submit"):
      st.write("correct_answer",correct_answer)
     
 
