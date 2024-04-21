@@ -8,14 +8,20 @@ import json
 
 video_id = st.text_input("Send YouTube video Id")
 st.write("For example You can J82z1hkl3Bo or 1ooqsxtdGS0")
-num_question =10 #st.text_input("How many questions Do you Want? [1,10]")
+num_question = 10 #st.text_input("How many questions Do you Want? [1,10]")
+current_directory = os.getcwd()
+print(current_directory,"::::::::")
 
 if st.button("next"):
-  file_path = f"C:\Future\\for git\\Quiz_Scribe\\{video_id}.json"
+  directory = ".."  # Root directory
+  subdirectories = ["Quiz_Scribe"]
+  file_name = f"{video_id}.json"
+  file_path = os.path.join(directory, *subdirectories, file_name)
+ 
   
   if  os.path.exists(file_path):
     with open(file_path) as f:
-      text = json.load(f)
+      quiz_Text = json.load(f)
       
   else:
       dictSubtitle = YouTubeTranscriptApi.get_transcript(video_id) 
@@ -36,12 +42,9 @@ if st.button("next"):
         json.dump(quizfile_json, json_file)
       
       with open(file_path, "r") as json_file:
-        text = json.load(json_file)
+        quiz_Text = json.load(json_file)
 
-  quiz_Text = text 
-
-
-
+   
   for i in range(num_question):
     question_text = str(i+1) + ". " + quiz_Text["questions"][i]["question"]
     answer = quiz_Text["questions"][i]["correct"]
