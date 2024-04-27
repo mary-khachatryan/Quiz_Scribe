@@ -25,7 +25,7 @@ if(int_num_question == 0):
     file_path = os.path.join(directory, *subdirectories, file_name)
     answer_path = os.path.join(directory, *subdirectories, answer_name)
   
-    if  os.path.exists(file_path):
+    if os.path.exists(file_path):
       with open(file_path) as f:
         quiz_Text = json.load(f)
       with open("copy.json","w") as f:
@@ -62,45 +62,59 @@ if(int_num_question == 0):
     answer = quiz_Text["questions"][int_num_question]["correct"]
     option = st.radio(label= question_text,options = (quiz_Text["questions"][int_num_question]["A"], quiz_Text["questions"][int_num_question]["B"], quiz_Text["questions"][int_num_question]["C"], quiz_Text["questions"][int_num_question]["D"])
     )
-    
-    if st.button('Next'):
-
-      
-      with open("iterator.txt",'w') as f:
+    int_num_question +=1
+    with open("iterator.txt",'w') as f:
         num_question = str(int_num_question)
         f.write(num_question)
-      if int_num_question > 10:
-        st.write(int_num_question,"verj ape jan")
-      int_num_question +=1
-else:
-   with open("copy.json") as f:
-        quiz_Text = json.load(f)
-   question_text = str(int_num_question+1) + ". " + quiz_Text["questions"][int_num_question]["question"]
-   answer = quiz_Text["questions"][int_num_question]["correct"]
-   option = st.radio(label= question_text,options = (quiz_Text["questions"][int_num_question]["A"], quiz_Text["questions"][int_num_question]["B"], quiz_Text["questions"][int_num_question]["C"], quiz_Text["questions"][int_num_question]["D"])
-   )
-   
-   
-   if int_num_question > 10:
-    st.write(int_num_question,"verj ape jan")
-    with open("iterator.txt",'w') as f:
+    if int_num_question > 10:
+      st.write(int_num_question,"verj ape jan")
+
+    if st.button('Submit'):
+     with open("iterator.txt",'w') as f:
       num_question = str(int_num_question)
       f.write(num_question)
-int_num_question +=1
-if st.button('Next'):
+     print("num",num_question)
 
-      
-      with open("iterator.txt",'w') as f:
+elif int_num_question <9: 
+  
+    with open("iterator.txt",'w') as f:
         num_question = str(int_num_question)
         f.write(num_question)
-      if int_num_question > 10:
-        st.write(int_num_question,"verj ape jan")
-      int_num_question +=1
+    
+      
+      
+      
+
+    with open("copy.json") as f:
+        quiz_Text = json.load(f)
+    question_text = str(int_num_question+1) + ". " + quiz_Text["questions"][int_num_question]["question"]+"aaaaaaaaaaaaaaaaaaaaaaaa"
+    answer = quiz_Text["questions"][int_num_question]["correct"]
+    option = st.radio(label= question_text,options = (quiz_Text["questions"][int_num_question]["A"], quiz_Text["questions"][int_num_question]["B"], quiz_Text["questions"][int_num_question]["C"], quiz_Text["questions"][int_num_question]["D"])
+    )
+    int_num_question +=1
+    with open("iterator.txt",'w') as f:
+        num_question = str(int_num_question)
+        f.write(num_question)
+    if int_num_question > 10:
+      st.write(int_num_question,"verj ape jan")
+
+if int_num_question == 9:   
+  st.write(int_num_question,"verj ape jan")
+
+#    if int_num_question > 10:
+#     st.write(int_num_question,"verj ape jan")
+#     with open("iterator.txt",'w') as f:
+#       num_question = str(int_num_question)
+#       f.write(num_question)
+# int_num_question +=1
+# if st.button('Next'):
+
+      
+#       with open("iterator.txt",'w') as f:
+#         num_question = str(int_num_question)
+#         f.write(num_question)
+#       if int_num_question > 10:
+#         st.write(int_num_question,"verj ape jan")
+#       int_num_question +=1
 
      
-    
-    
-        
-    
-    
-
